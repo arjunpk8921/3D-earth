@@ -87,6 +87,8 @@ function main() {
     //adding star geometry
     const starGeometry = new THREE.SphereGeometry(5, 64, 64);
     const starMaterial = new THREE.MeshBasicMaterial({ map: new THREE.TextureLoader().load('./texture/galaxy.png'), side: THREE.BackSide });
+    const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+    scene.add(starMesh);
 
     // set ambientlight
     const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
