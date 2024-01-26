@@ -104,7 +104,7 @@ function main() {
     camera.position.z = 3;
 
     const render = () => {
-        targetRotationX=0.01;
+        targetRotationX=0.001;
         targetRotationY=0;
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
