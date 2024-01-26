@@ -35,6 +35,38 @@
 
 import * as THREE from 'three';
 
+let mouseX = 0, mouseXOnMouseDown = 0, mouseY = 0, mouseYOnMouseDown = 0, targetRotation = 0, targetRotationOnMouseDown = 0;
+const windowHalfX = window.innerWidth / 2;
+const windowHalfY = window.innerHeight / 2;
+const delayFactor = 0.0002;
+const slowingFactor = 0.98;
+let targetRotationX = 0.05;
+let targetRotationY = 0.02;
+
+function onDocumentMouseDown(event) {
+    event.preventDefault();
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
+    document.addEventListener('mouseup', onDocumentMouseUp, false);
+    // document.addEventListener('mouseout', onDocumentMouseOut, false);
+    mouseXOnMouseDown = event.clientX - windowHalfX;
+    mouseYOnMouseDown = event.clientY - windowHalfY;
+    targetRotationOnMouseDown = targetRotation;
+}
+
+function onDocumentMouseMove(event) {
+    mouseX = event.clientX - windowHalfX;
+    mouseY = event.clientY - windowHalfY;
+    targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * delayFactor;
+    targetRotationY = targetRotationOnMouseDown + (mouseY - mouseYOnMouseDown) * delayFactor;
+}
+
+//to prevent insteraction when cursor is out of the earth
+function onDocumentMouseUp(event) {
+    document.removeEventListener('mousemove', onDocumentMouseMove, false);
+    document.removeEventListener('mouseup', onDocumentMouseUp, false);
+}
+
+
 function main() {
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe') });
@@ -42,7 +74,7 @@ function main() {
 
     //adding earth's geometry
     const earthGeometry = new THREE.SphereGeometry(.5, 32, 32);
-    const earthMaterial = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'),bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'),bumpScale: 0.08});``
+    const earthMaterial = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'), bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'), bumpScale: 0.08 }); ``
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earthMesh);
 
@@ -60,7 +92,10 @@ function main() {
     camera.position.z = 3;
 
     const render = () => {
-        earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), 0.001);
+        earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
+        earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
+        targetRotationX *= slowingFactor;
+        targetRotationY *= slowingFactor;
         renderer.render(scene, camera);
     }
     const animate = () => {
@@ -68,6 +103,10 @@ function main() {
         render();
     }
     animate();
+
+    //adding interactivity
+    document.addEventListener('mousedown', onDocumentMouseDown, false);
 }
+
 
 window.onload = main;
