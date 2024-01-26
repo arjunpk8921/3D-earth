@@ -57,7 +57,7 @@ function main() {
 
     //adding camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 2;
+    camera.position.z = 5;
 
     const render = () => {
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), 0.001);
