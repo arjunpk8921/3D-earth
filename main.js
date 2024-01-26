@@ -78,6 +78,12 @@ function main() {
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earthMesh);
 
+    //adding clouds
+    const cloudGeometry = new THREE.SphereGeometry(.52, 32, 32);
+    const cloudMaterial = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('./texture/earthCloud.png'), transparent: true });
+    const cloudMesh = new THREE.Mesh(cloudGeometry, cloudMaterial);
+    scene.add(cloudMesh);
+
     // set ambientlight
     const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientlight);
@@ -94,6 +100,8 @@ function main() {
     const render = () => {
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
+        cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
+        cloudMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         targetRotationX *= slowingFactor;
         targetRotationY *= slowingFactor;
         renderer.render(scene, camera);
