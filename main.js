@@ -42,7 +42,7 @@ function main() {
 
     //adding earth's geometry
     const earthGeometry = new THREE.SphereGeometry(.5, 32, 32);
-    const earthMaterial = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'),bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'),bumpScale: 0.01});``
+    const earthMaterial = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'),bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'),bumpScale: 0.05});``
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earthMesh);
 
