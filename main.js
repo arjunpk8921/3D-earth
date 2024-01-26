@@ -50,10 +50,10 @@ function main() {
     const ambientlight = new THREE.AmbientLight(0xffffff, 0.2);
     scene.add(ambientlight);
     // set point light
-    const pointerlight = new THREE.PointLight(0xffffff, 90,);
-    // set light position
-    pointerlight.position.set(5, 3, 5);
-    scene.add(pointerlight);
+    // const pointerlight = new THREE.PointLight(0xffffff, 90,);
+    // // set light position
+    // pointerlight.position.set(5, 3, 5);
+    // scene.add(pointerlight);
 
     //adding camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
