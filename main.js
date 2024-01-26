@@ -104,12 +104,14 @@ function main() {
     camera.position.z = 3;
 
     const render = () => {
+        targetRotationX=0.01;
+        targetRotationY=0.01;
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
-        targetRotationX *= slowingFactor;
-        targetRotationY *= slowingFactor;
+        // targetRotationX *= slowingFactor;
+        // targetRotationY *= slowingFactor;
         renderer.render(scene, camera);
     }
     const animate = () => {
