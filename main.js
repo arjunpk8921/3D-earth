@@ -42,7 +42,7 @@ function main() {
 
     //adding earth's geometry
     const earthGeometry = new THREE.SphereGeometry(.5, 32, 32);
-    const earthMaterial = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'),bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'),bumpScale: 0.05});``
+    const earthMaterial = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'),bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'),bumpScale: 0.08});``
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earthMesh);
 
@@ -57,7 +57,7 @@ function main() {
 
     //adding camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 5;
+    camera.position.z = 3;
 
     const render = () => {
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), 0.001);
