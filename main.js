@@ -60,7 +60,7 @@ function main() {
     camera.position.z = 2;
 
     const render = () => {
-        earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), 0.001);
+        earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), 0.005);
         renderer.render(scene, camera);
     }
     const animate = () => {
