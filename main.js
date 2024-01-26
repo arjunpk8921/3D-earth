@@ -105,7 +105,7 @@ function main() {
 
     const render = () => {
         targetRotationX=0.01;
-        targetRotationY=0.01;
+        targetRotationY=0;
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
