@@ -40,8 +40,6 @@ const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 const delayFactor = 0.0002;
 const slowingFactor = 0.98;
-let targetRotationX = 0.05;
-let targetRotationY = 0.02;
 
 function onDocumentMouseDown(event) {
     event.preventDefault();
@@ -68,6 +66,8 @@ function onDocumentMouseUp(event) {
 
 
 function main() {
+    let targetRotationX = 0.05;
+    let targetRotationY = 0.02;
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe') });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -110,15 +110,8 @@ function main() {
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
-        if (targetRotationX >= 0.0001 && targetRotationY >= 0) {
-            targetRotationX *= slowingFactor;
-            targetRotationY *= slowingFactor;
-        }
-        else {
-            targetRotationX = 0.05;
-            targetRotationY = 0.02;
-        }
-
+        targetRotationX *= slowingFactor;
+        targetRotationY *= slowingFactor;
         renderer.render(scene, camera);
     }
     const animate = () => {
