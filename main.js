@@ -2,7 +2,7 @@
 
 // // init
 
-// const camera = new THREE.PerspectiveCamera( 70, canvas.clientWidth / canvas.clientHeight, 0.01, 10 );
+// const camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 0.01, 10 );
 // camera.position.z = 1;
 
 // const scene = new THREE.Scene();
@@ -14,7 +14,7 @@
 // scene.add( mesh );
 
 // const renderer = new THREE.WebGLRenderer( { antialias: true } );
-// renderer.setSize( canvas.clientWidth, canvas.clientHeight );
+// renderer.setSize( window.innerWidth, window.innerHeight );
 // renderer.setAnimationLoop( animation );
 // document.body.appendChild( renderer.domElement );
 
@@ -36,8 +36,8 @@
 import * as THREE from 'three';
 
 let mouseX = 0, mouseXOnMouseDown = 0, mouseY = 0, mouseYOnMouseDown = 0, targetRotation = 0, targetRotationOnMouseDown = 0;
-const windowHalfX = canvas.clientWidth / 2;
-const windowHalfY = canvas.clientHeight / 2;
+const windowHalfX = window.innerWidth / 2;
+const windowHalfY = window.innerHeight / 2;
 const delayFactor = 0.0002;
 const slowingFactor = 0.98;
 let targetRotationX = 0.001;
@@ -72,8 +72,8 @@ function onDocumentMouseUp(event) {
 function main() {
     const scene = new THREE.Scene();
     const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe'), alpha: true});
-    // renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    
 
     //adding earth's geometry
     const earthGeometry = new THREE.SphereGeometry(.5, 32, 32);
@@ -103,7 +103,7 @@ function main() {
     scene.add(pointerlight);
 
     //adding camera
-    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 3;
 
     const render = () => {
