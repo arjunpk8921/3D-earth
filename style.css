@@ -18,4 +18,18 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(207, 172, 127, 0.5);
+    border-radius: 10px;
+}
+
+.test::after {
+    content: "";
+    position: absolute;
+    bottom: -10px; /* Adjust this value to move the triangle up or down */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(207, 172, 127, 0.5); /* This color should match the background color of the .test div */
 }
