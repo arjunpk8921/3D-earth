@@ -40,9 +40,10 @@ const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 const delayFactor = 0.0002;
 const slowingFactor = 0.98;
-let targetRotationX = 0.05;
-let targetRotationY = 0.02;
-const target = 0.01;
+let targetRotationX = 0.01;
+let targetRotationY = 0.001;
+const targetX = 0.01;
+const targetY = 0.001;
 
 function onDocumentMouseDown(event) {
     event.preventDefault();
@@ -112,12 +113,17 @@ function main() {
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         //targetRotationX *= slowingFactor;
-        targetRotationY *= slowingFactor;
+        // targetRotationY *= slowingFactor;
 
-        if (targetRotationX > target) {
-            targetRotationX = Math.max(targetRotationX - slowingFactor, target);
-        } else if (targetRotationX < target) {
-            targetRotationX = Math.min(targetRotationX + slowingFactor, target);
+        if (targetRotationX > targetX) {
+            targetRotationX = Math.max(targetRotationX - slowingFactor, targetX);
+        } else if (targetRotationX < targetX) {
+            targetRotationX = Math.min(targetRotationX + slowingFactor, targetX);
+        }
+        if (targetRotationY > targetY) {
+            targetRotationY = Math.max(targetRotationY - slowingFactor, targetY);
+        } else if (targetRotationY < targetY) {
+            targetRotationY = Math.min(targetRotationY + slowingFactor, targetY);
         }
         renderer.render(scene, camera);
     }
