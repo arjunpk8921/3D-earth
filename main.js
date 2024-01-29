@@ -71,7 +71,7 @@ function onDocumentMouseUp(event) {
 
 function main() {
     const scene = new THREE.Scene();
-    const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe') });
+    const renderer = new THREE.WebGLRenderer({ canvas: document.querySelector('#globe'), alpha: true});
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     //adding earth's geometry
