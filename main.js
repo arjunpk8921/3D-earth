@@ -42,7 +42,7 @@ const delayFactor = 0.0002;
 const slowingFactor = 0.98;
 let targetRotationX = 0.05;
 let targetRotationY = 0.02;
-const target = 0.05;
+const target = 0.01;
 
 function onDocumentMouseDown(event) {
     event.preventDefault();
