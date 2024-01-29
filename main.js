@@ -115,8 +115,8 @@ function main() {
             targetRotationY *= slowingFactor;
         }
         else {
-            targetRotationX = 0.0001;
-            targetRotationY = 0;
+            targetRotationX = 0.05;
+            targetRotationY = 0.02;
         }
 
         renderer.render(scene, camera);
