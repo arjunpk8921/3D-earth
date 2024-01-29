@@ -40,10 +40,10 @@ const windowHalfX = window.innerWidth / 2;
 const windowHalfY = window.innerHeight / 2;
 const delayFactor = 0.0002;
 const slowingFactor = 0.98;
-let targetRotationX = 0.01;
-let targetRotationY = 0.001;
-const targetX = 0.01;
-const targetY = 0.001;
+let targetRotationX = 0.001;
+let targetRotationY = 0.0001;
+const targetX = targetRotationX;
+const targetY = targetRotationY;
 
 function onDocumentMouseDown(event) {
     event.preventDefault();
