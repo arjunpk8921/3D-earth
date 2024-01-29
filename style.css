@@ -24,7 +24,7 @@ body {
 .test::after {
     content: "";
     position: absolute;
-    bottom: -10px; /* Adjust this value to move the triangle up or down */
+    bottom: -20px; /* Adjust this value to move the triangle up or down */
     left: 50%;
     transform: translateX(-50%);
     width: 0;
