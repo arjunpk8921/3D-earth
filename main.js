@@ -110,8 +110,15 @@ function main() {
         earthMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), targetRotationX);
         cloudMesh.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), targetRotationY);
-        targetRotationX *= slowingFactor;
-        targetRotationY *= slowingFactor;
+        if (targetRotationX >= 0.0001 && targetRotationY >= 0) {
+            targetRotationX *= slowingFactor;
+            targetRotationY *= slowingFactor;
+        }
+        else {
+            targetRotationX = 0.0001;
+            targetRotationY = 0;
+        }
+
         renderer.render(scene, camera);
     }
     const animate = () => {
