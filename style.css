@@ -11,14 +11,18 @@ body {
 }
 
 .test{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 80%;
-    height: 100px;
+    height: 150px;
     position: absolute;
     top: 22vh;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgba(207, 172, 127, 0.5);
     border-radius: 10px;
+    color:rgba(255, 255, 255, 0.5);
 }
 
 .test::after {
