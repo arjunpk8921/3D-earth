@@ -50,14 +50,14 @@ function onDocumentMouseDown(event) {
     // document.addEventListener('mouseout', onDocumentMouseOut, false);
     mouseXOnMouseDown = event.clientX - windowHalfX;
     mouseYOnMouseDown = event.clientY - windowHalfY;
-    targetRotationOnMouseDown = targetRotation;
+    // targetRotationOnMouseDown = targetRotation;
 }
 
 function onDocumentMouseMove(event) {
     mouseX = event.clientX - windowHalfX;
     mouseY = event.clientY - windowHalfY;
-    targetRotation = targetRotationOnMouseDown + (mouseX - mouseXOnMouseDown) * delayFactor;
-    targetRotationY = targetRotationOnMouseDown + (mouseY - mouseYOnMouseDown) * delayFactor;
+    targetRotationX = (mouseX - mouseXOnMouseDown) * delayFactor;
+    targetRotationY = (mouseY - mouseYOnMouseDown) * delayFactor;
 }
 
 //to prevent insteraction when cursor is out of the earth
@@ -74,7 +74,7 @@ function main() {
 
     //adding earth's geometry
     const earthGeometry = new THREE.SphereGeometry(.5, 32, 32);
-    const earthMaterial = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'), bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'), bumpScale: 0.08 }); ``
+    const earthMaterial = new THREE.MeshPhongMaterial({ map: new THREE.TextureLoader().load('./texture/earthmap.jpeg'), bumpMap: new THREE.TextureLoader().load('./texture/earthbump.jpeg'), bumpScale: 0.01 }); ``
     const earthMesh = new THREE.Mesh(earthGeometry, earthMaterial);
     scene.add(earthMesh);
 
@@ -101,7 +101,7 @@ function main() {
 
     //adding camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 3;
+    camera.position.z = 1.7;
 
     const render = () => {
         // targetRotationX=0.001;
