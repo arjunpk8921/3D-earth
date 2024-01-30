@@ -45,12 +45,7 @@ let targetRotationY = 0.0001;
 const targetX = targetRotationX;
 const targetY = targetRotationY;
 let cameraPosition=3;
-if (window.innerWidth < 768) {
-    cameraPosition = 3;
-}
-else {
-    cameraPosition = 1.7;
-}
+
 
 function onDocumentMouseDown(event) {
     event.preventDefault();
@@ -111,6 +106,12 @@ function main() {
 
     //adding camera
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    if (window.innerWidth < 768) {
+        cameraPosition = 3;
+    }
+    else {
+        cameraPosition = 1.7;
+    }
     camera.position.z = cameraPosition;
 
     const render = () => {
