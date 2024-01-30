@@ -44,6 +44,7 @@ let targetRotationX = 0.001;
 let targetRotationY = 0.0001;
 const targetX = targetRotationX;
 const targetY = targetRotationY;
+let cameraPosition=3;
 if (window.innerWidth < 768) {
     cameraPosition = 3;
 }
