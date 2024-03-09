@@ -1,5 +1,5 @@
-# ⚠️ Warning 
+# Enjoy the rotating earth 🌎
 
-**This Project is Under Construction**
+**Interaction with the earth doesn't work in touch screen**
 
 
