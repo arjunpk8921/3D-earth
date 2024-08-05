@@ -1,5 +1,5 @@
 # Enjoy the rotating earth 🌎
 
-**Can interact with the earth using mouse.**
+**You can interact with the earth using your mouse.**
 
 
